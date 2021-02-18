@@ -1,45 +1,777 @@
-let x=0
-let y=0
+let score = 0;
+console.log(score);
 
-const pacman = document.getElementById("pac")
-pacman.style.position="absolute";
-pacman.style.left='50%';
-pacman.style.top='50%';
+// ==================
+// Creating my layout
+// ==================
 
+let layout = [
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  1,
+  1,
+  1,
+  1,
+  2,
+  2,
+  2,
+  1,
+  1,
+  1,
+  2,
+  2,
+  2,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  2,
+  2,
+  1,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  1,
+  2,
+  2,
+  1,
+  1,
+  1,
+  1,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  1,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  1,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  1,
+  2,
+  2,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  1,
+  1,
+  1,
+  1,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  1,
+  1,
+  1,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  1,
+  1,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  2,
+  2,
+  2,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  2,
+  2,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  1,
+  2,
+  1,
+  1,
+  1,
+  1,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  1,
+  1,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  2,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  1,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  1,
+  2,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  1,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  1,
+  1,
+  1,
+  1,
+  2,
+  2,
+  2,
+  2,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  2,
+  2,
+  2,
+  1,
+  2,
+  2,
+  1,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+];
 
+// ================================================
+// creating an empty square to draw a layout inside
+// ================================================
 
-function moveUp() {
-    y++
-    pacman.style.top=parseInt(pacman.style.top)-2 +'%';
+let squares = [];
+
+// =============
+// DOM from HTML
+// =============
+const arena = document.querySelector(".arena");
+const pacman = document.querySelector(".pac");
+const displayScore = document.querySelector(".score");
+const ghost = document.querySelector(".ghost");
+
+// ===================
+// Draw inside squares
+// ===================
+
+function draw() {
+  for (let i = 0; i < layout.length; i++) {
+    const square = document.createElement("div");
+    arena.appendChild(square);
+    squares.push(square);
+
+    if (layout[i] === 1) {
+      squares[i].classList.add("points");
+    } else if (layout[i] === 2) {
+      squares[i].classList.add("wall");
+    } else if (layout[i] === 3) {
+      squares[i].classList.add("pac");
+    } else if (layout[i] === 4) {
+      squares[i].classList.add("ghost");
+    } else if (layout[i] === 5) {
+      squares[i].classList.add("vaccin");
+    }
+  }
 }
 
-function moveDown() {
-    y--
-    pacman.style.top=parseInt(pacman.style.top)+2 +'%';
+// ===================
+// Call draw function
+// ===================
+
+draw();
+
+// ======================
+// Intiating pacman place
+// ======================
+
+let Index = 179 ;
+squares[Index].classList.remove("points");
+squares[Index].classList.add("pac");
+
+// =====================
+// Intiating ghost place
+// =====================
+
+let IndexG = 492;
+squares[IndexG].classList.add("ghost");
+
+// =====================
+// Moving pacman
+// =====================
+
+function movePacman(e) {
+  squares[Index].classList.remove("pac");
+  if (e.key === "ArrowUp" && !squares[Index - 25].classList.contains("wall")) {
+    console.log(`Key "${e.key}" pressed`);
+    Index -= 25;
+  } else if (
+    e.key === "ArrowDown" &&
+    !squares[Index + 25].classList.contains("wall")
+  ) {
+    console.log(`Key "${e.key}" pressed`);
+    Index += 25;
+  } else if (
+    e.key === "ArrowLeft" &&
+    !squares[Index - 1].classList.contains("wall")
+  ) {
+    console.log(`Key "${e.key}" pressed`);
+    Index -= 1;
+  } else if (
+    e.key === "ArrowRight" &&
+    !squares[Index + 1].classList.contains("wall")
+  ) {
+    console.log(`Key "${e.key}" pressed`);
+    Index += 1;
+  }
+  eatPoints();
+  pacDie();
+  squares[Index].classList.remove("points");
+  squares[Index].classList.add("pac");
+  squares[Index].classList.add("nothing");
+  if (squares[Index] !== squares[IndexG]) {
+    console.log("STOP THE GAME");
+    c;
+  }
 }
 
-function moveRight() {
-    x++
-    pacman.style.left=parseInt(pacman.style.left)+2 +'%';
-}
- 
-function moveLeft() {
-    x--
-    pacman.style.left=parseInt(pacman.style.left)-2 +'%';
+// ==========
+// Game Over
+// ==========
+
+function pacDie() {
+  if (squares[Index] == squares[IndexG]) {
+    console.log("STOP THE GAME");
+    arena.innerHTML = "GAME OVER";
+  }
 }
 
+// ==========
+// Move ghost
+// ==========
 
-document.addEventListener('keydown', (e) => {
-    if (e.key === "ArrowUp"){
-        console.log(`Key "${e.key}" pressed`);
-        moveUp();
-    }else if (e.key === "ArrowDown"){
-        console.log(`Key "${e.key}" pressed`);
-        moveDown();
-    }else if (e.key === "ArrowLeft"){
-        console.log(`Key "${e.key}" pressed`);
-        moveLeft()
-    }else if (e.key === "ArrowRight"){
-        console.log(`Key "${e.key}" pressed`);
-        moveRight()}
-});
+function moveGhost() {
+  squares[IndexG].classList.remove("ghost");
+
+  if (!squares[IndexG - 25].classList.contains("wall")) {
+    IndexG -= 25;
+  } else if (!squares[IndexG - 1].classList.contains("wall")) {
+    IndexG -= 1;
+  } else if (!squares[IndexG + 25].classList.contains("wall")) {
+    IndexG += 25;
+  } else if (!squares[IndexG + 1].classList.contains("wall")) {
+    IndexG += 1;
+  }
+  squares[IndexG].classList.add("ghost");
+}
+setInterval(() => {
+  moveGhost();
+  console.log(IndexG);
+}, 500);
+
+document.addEventListener("keyup", movePacman);
+
+function eatPoints() {
+  // const displayScore = document.getElementById("score")
+  if (squares[Index].classList.contains("points")) {
+    score += 10;
+    displayScore.innerHTML = score;
+    squares[Index].classList.remove("points");
+  }
+}

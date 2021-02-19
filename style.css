@@ -5,6 +5,9 @@
     background-color: #FFF001;
 }
 
+h1 {
+    padding-top: 35px;
+}
 body {
     font-family: 'Press Start 2P', cursive;
     color: #1F2937;

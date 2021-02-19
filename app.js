@@ -1,6 +1,17 @@
 let score = 0;
 console.log(score);
 
+var audio = new Audio("./music.mp3");
+var hurt1 = new Audio("./take_one.mp3");
+var hurt2 = new Audio("./take_two.mp3");
+var hurt3 = new Audio("./take_three.mp3");
+var eat = new Audio("./eat.mp3");
+
+var array = ["right", "left", "up", "down"];
+
+audio.play();
+audio.volume = 0.1;
+
 // ==================
 // Creating my layout
 // ==================
@@ -681,7 +692,7 @@ draw();
 // Intiating pacman place
 // ======================
 
-let Index = 179 ;
+let Index = 180;
 squares[Index].classList.remove("points");
 squares[Index].classList.add("pac");
 
@@ -689,8 +700,41 @@ squares[Index].classList.add("pac");
 // Intiating ghost place
 // =====================
 
-let IndexG = 492;
+let IndexG = 467;
 squares[IndexG].classList.add("ghost");
+
+function randomDirection() {
+  return array[Math.floor(Math.random() * array.length)];
+}
+
+function moveGhost() {
+  squares[IndexG].classList.remove("ghost");
+
+  const random = randomDirection();
+  switch (random) {
+    case "up":
+      if (!squares[IndexG - 25].classList.contains("wall")) IndexG -= 25;
+      break;
+    case "left":
+      if (!squares[IndexG - 1].classList.contains("wall")) IndexG -= 1;
+
+      break;
+    case "down":
+      if (!squares[IndexG + 25].classList.contains("wall")) IndexG += 25;
+
+      break;
+    case "right":
+      if (!squares[IndexG + 1].classList.contains("wall")) IndexG += 1;
+
+      console.log("lol");
+      break;
+    default:
+      console.log("nothing is heappening");
+      break;
+  }
+  
+  squares[IndexG].classList.add("ghost");
+}
 
 // =====================
 // Moving pacman
@@ -727,7 +771,6 @@ function movePacman(e) {
   squares[Index].classList.add("nothing");
   if (squares[Index] !== squares[IndexG]) {
     console.log("STOP THE GAME");
-    c;
   }
 }
 
@@ -738,7 +781,17 @@ function movePacman(e) {
 function pacDie() {
   if (squares[Index] == squares[IndexG]) {
     console.log("STOP THE GAME");
-    arena.innerHTML = "GAME OVER";
+    if (score > 100) {
+      hurt1.play();
+      score -= 30;
+    } else if (score < 50) {
+      hurt3.play();
+      score -= 50;
+      arena.innerHTML = "GAME OVER";
+    } else if (score > 80) {
+      hurt3.play();
+      score -= 30;
+    }
   }
 }
 
@@ -746,20 +799,6 @@ function pacDie() {
 // Move ghost
 // ==========
 
-function moveGhost() {
-  squares[IndexG].classList.remove("ghost");
-
-  if (!squares[IndexG - 25].classList.contains("wall")) {
-    IndexG -= 25;
-  } else if (!squares[IndexG - 1].classList.contains("wall")) {
-    IndexG -= 1;
-  } else if (!squares[IndexG + 25].classList.contains("wall")) {
-    IndexG += 25;
-  } else if (!squares[IndexG + 1].classList.contains("wall")) {
-    IndexG += 1;
-  }
-  squares[IndexG].classList.add("ghost");
-}
 setInterval(() => {
   moveGhost();
   console.log(IndexG);
@@ -770,7 +809,8 @@ document.addEventListener("keyup", movePacman);
 function eatPoints() {
   // const displayScore = document.getElementById("score")
   if (squares[Index].classList.contains("points")) {
-    score += 10;
+    eat.play();    
+    score += 2;
     displayScore.innerHTML = score;
     squares[Index].classList.remove("points");
   }
